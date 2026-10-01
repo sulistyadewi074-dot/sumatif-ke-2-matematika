@@ -223,19 +223,19 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
               </div>
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
                 <span>2. Pilihan Ganda Kompleks (PGK)</span>
-                <span className="font-bold text-emerald-300">5 Butir</span>
+                <span className="font-bold text-emerald-300">3 Butir</span>
               </div>
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
-                <span>3. PGK Kategori (Respon Kategori)</span>
+                <span>3. Benar / Salah</span>
                 <span className="font-bold text-amber-300">5 Butir</span>
               </div>
               <div className="flex items-center justify-between bg-slate-800/80 p-2.5 rounded-lg border border-slate-700">
                 <span>4. Isian Singkat</span>
-                <span className="font-bold text-purple-300">5 Butir</span>
+                <span className="font-bold text-purple-300">2 Butir</span>
               </div>
               <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-slate-300">
                 <span>Total Butir Soal:</span>
-                <span className="font-extrabold text-white text-sm">30 Soal</span>
+                <span className="font-extrabold text-white text-sm">25 Soal</span>
               </div>
             </div>
 
@@ -250,7 +250,7 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
               </p>
               <p className="flex items-start gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
-                <span>Seluruh 30 butir soal wajib dijawab sebelum dikirim.</span>
+                <span>Seluruh 25 butir soal wajib dijawab sebelum dikirim.</span>
               </p>
               <p className="flex items-start gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
@@ -264,7 +264,7 @@ export const Stage1Identity: React.FC<Stage1IdentityProps> = ({
                 type="button"
                 onClick={() => downloadExamQuestionsPDF(questions || INITIAL_QUESTIONS)}
                 className="w-full py-2.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-semibold flex items-center justify-center gap-2 border border-slate-700 transition-colors cursor-pointer"
-                title="Unduh Naskah Soal Ujian (30 Soal) dalam format PDF"
+                title="Unduh Naskah Soal Ujian (25 Soal) dalam format PDF"
               >
                 <Download className="w-4 h-4 text-blue-400" />
                 <span>Unduh Naskah Soal Lengkap (PDF)</span>

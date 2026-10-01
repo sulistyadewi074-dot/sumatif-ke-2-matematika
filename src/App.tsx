@@ -17,7 +17,7 @@ import { Stage4TeacherPanel } from './components/Stage4TeacherPanel';
 import { TeacherAuthModal } from './components/TeacherAuthModal';
 import { MateriModal } from './components/MateriModal';
 
-const STORAGE_QUESTIONS_KEY = 'sd3_loloan_timur_questions_matematika_desimal_v1';
+const STORAGE_QUESTIONS_KEY = 'sd3_loloan_timur_questions_matematika_desimal_v3';
 const STORAGE_ALLOW_REVIEW_KEY = 'sd3_loloan_timur_allow_review';
 
 export default function App() {
@@ -37,7 +37,7 @@ export default function App() {
       const saved = localStorage.getItem(STORAGE_QUESTIONS_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Pastikan jumlah dan struktur sesuai dengan distribusi 30 butir soal (15 PG, 5 PGK, 5 PGK Kategori, 5 Isian)
+        // Pastikan jumlah dan struktur sesuai dengan distribusi 25 butir soal (15 PG, 3 PGK, 5 Benar Salah, 2 Isian Singkat)
         if (Array.isArray(parsed) && parsed.length === INITIAL_QUESTIONS.length) {
           return parsed;
         }
@@ -78,7 +78,7 @@ export default function App() {
     });
   };
 
-  // Reset soal ke 35 butir standar materi Nilai-nilai Pancasila
+  // Reset soal ke 25 butir standar materi Bilangan Desimal
   const handleResetDefaultQuestions = () => {
     setQuestions(INITIAL_QUESTIONS);
     try {

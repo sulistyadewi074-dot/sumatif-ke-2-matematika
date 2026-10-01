@@ -135,7 +135,7 @@ export function downloadStudentResultPDF(result: ExamResult): void {
   y += 8;
 
   // Baris-baris tabel
-  const totalQuestionsCount = (result.benar || 0) + (result.salah || 0) > 0 ? (result.benar || 0) + (result.salah || 0) : 30;
+  const totalQuestionsCount = (result.benar || 0) + (result.salah || 0) > 0 ? (result.benar || 0) + (result.salah || 0) : 25;
   const tableRows = [
     { label: 'Jumlah Soal Keseluruhan', value: `${totalQuestionsCount} Butir Soal` },
     { label: 'Jumlah Jawaban Benar', value: `${result.benar} Soal` },
@@ -318,7 +318,7 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
 
     let typeLabel = 'Pilihan Ganda';
     if (q.type === 'pgk') typeLabel = 'Pilihan Ganda Kompleks (Bisa >1 jawaban benar)';
-    if (q.type === 'pgk_kategori') typeLabel = 'PGK Kategori (Respon Kategori)';
+    if (q.type === 'pgk_kategori') typeLabel = q.categoryType === 'benar_salah' ? 'Benar / Salah' : 'PGK Kategori';
     if (q.type === 'isian') typeLabel = 'Isian Singkat';
 
     doc.setTextColor(30, 58, 138);
@@ -371,7 +371,7 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     }
   });
 
-  doc.save(`Naskah_Soal_Pendidikan_Pancasila_Kelas_VI_${CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
+  doc.save(`Naskah_Soal_Matematika_Kelas_VI_${CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
 }
 
 /**
@@ -396,7 +396,7 @@ export function exportResultsToCSV(results: ExamResult[]): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.setAttribute('href', url);
-  link.setAttribute('download', `Rekap_Nilai_Tes_Pendidikan_Pancasila_Kelas_${CONFIG.KELAS}.csv`);
+  link.setAttribute('download', `Rekap_Nilai_Tes_Matematika_Kelas_${CONFIG.KELAS}.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

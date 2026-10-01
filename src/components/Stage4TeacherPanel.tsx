@@ -753,7 +753,7 @@ export const Stage4TeacherPanel: React.FC<Stage4TeacherPanelProps> = ({
               <p className="text-xs text-slate-500">
                 {questions.filter((q) => q.type === 'pg').length} Soal Pilihan Ganda,{' '}
                 {questions.filter((q) => q.type === 'pgk').length} Soal Pilihan Ganda Kompleks,{' '}
-                {questions.filter((q) => q.type === 'pgk_kategori').length} Soal PGK Kategori,{' '}
+                {questions.filter((q) => q.type === 'pgk_kategori').length} Soal Benar / Salah,{' '}
                 {questions.filter((q) => q.type === 'isian').length} Soal Isian Singkat
               </p>
             </div>
@@ -810,7 +810,7 @@ export const Stage4TeacherPanel: React.FC<Stage4TeacherPanelProps> = ({
                     <span className="text-xs font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
                       {q.type === 'pg' && 'Pilihan Ganda'}
                       {q.type === 'pgk' && 'Pilihan Ganda Kompleks'}
-                      {q.type === 'pgk_kategori' && 'PGK Kategori'}
+                      {q.type === 'pgk_kategori' && (q.categoryType === 'benar_salah' ? 'Benar / Salah' : 'PGK Kategori')}
                       {q.type === 'isian' && 'Isian Singkat'}
                     </span>
                     <span className="text-xs font-medium text-slate-600">{q.topic}</span>

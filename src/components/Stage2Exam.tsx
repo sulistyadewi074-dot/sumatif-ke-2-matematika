@@ -402,7 +402,7 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
                   <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
                     {currentQ.type === 'pg' && 'Pilihan Ganda'}
                     {currentQ.type === 'pgk' && 'Pilihan Ganda Kompleks'}
-                    {currentQ.type === 'pgk_kategori' && 'PGK Kategori'}
+                    {currentQ.type === 'pgk_kategori' && (currentQ.categoryType === 'benar_salah' ? 'Benar / Salah' : 'PGK Kategori')}
                     {currentQ.type === 'isian' && 'Isian Singkat'}
                   </span>
                 </div>

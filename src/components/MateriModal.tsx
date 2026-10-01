@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { MATERI_MATEMATIKA, MateriSection } from '../data/materiMatematika';
+import { MATERI_PANCASILA, MateriSection } from '../data/materiPancasila';
 import { downloadMateriPembelajaranPDF } from '../utils/pdfGenerator';
 import {
   X,
   BookOpen,
   Download,
-  Calculator,
-  ArrowRightLeft,
-  Split,
-  BarChart3,
+  Compass,
+  Star,
+  HeartHandshake,
+  TreePine,
+  Users,
+  Wheat,
+  Megaphone,
+  ShieldAlert,
   CheckCircle2,
   Sparkles,
   School,
@@ -28,25 +32,33 @@ export const MateriModal: React.FC<MateriModalProps> = ({
   onStartExam,
 }) => {
   const [activeSectionId, setActiveSectionId] = useState<string>(
-    MATERI_MATEMATIKA.sections[0].id
+    MATERI_PANCASILA.sections[0].id
   );
 
   if (!isOpen) return null;
 
   const activeSection =
-    MATERI_MATEMATIKA.sections.find((s) => s.id === activeSectionId) ||
-    MATERI_MATEMATIKA.sections[0];
+    MATERI_PANCASILA.sections.find((s) => s.id === activeSectionId) ||
+    MATERI_PANCASILA.sections[0];
 
   const getSectionIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Calculator':
-        return <Calculator className="w-5 h-5 text-blue-600" />;
-      case 'ArrowRightLeft':
-        return <ArrowRightLeft className="w-5 h-5 text-emerald-600" />;
-      case 'Split':
-        return <Split className="w-5 h-5 text-purple-600" />;
-      case 'BarChart3':
-        return <BarChart3 className="w-5 h-5 text-amber-500" />;
+      case 'Compass':
+        return <Compass className="w-5 h-5 text-blue-600" />;
+      case 'Star':
+        return <Star className="w-5 h-5 text-amber-500 fill-amber-400" />;
+      case 'HeartHandshake':
+        return <HeartHandshake className="w-5 h-5 text-rose-600" />;
+      case 'TreePine':
+        return <TreePine className="w-5 h-5 text-emerald-600" />;
+      case 'Users':
+        return <Users className="w-5 h-5 text-indigo-600" />;
+      case 'Wheat':
+        return <Wheat className="w-5 h-5 text-amber-600" />;
+      case 'Megaphone':
+        return <Megaphone className="w-5 h-5 text-purple-600" />;
+      case 'ShieldAlert':
+        return <ShieldAlert className="w-5 h-5 text-teal-600" />;
       default:
         return <BookOpen className="w-5 h-5 text-blue-600" />;
     }
@@ -64,14 +76,14 @@ export const MateriModal: React.FC<MateriModalProps> = ({
             <div>
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2 py-0.5 rounded-md">
-                  Modul Belajar Matematika
+                  Modul Belajar Pendidikan Pancasila
                 </span>
                 <span className="text-xs text-slate-500 hidden sm:inline">
-                  {MATERI_MATEMATIKA.targetKelas} • {MATERI_MATEMATIKA.schoolName}
+                  {MATERI_PANCASILA.targetKelas} • {MATERI_PANCASILA.schoolName}
                 </span>
               </div>
               <h3 className="text-sm sm:text-base font-extrabold text-slate-900 tracking-tight mt-0.5">
-                {MATERI_MATEMATIKA.title}
+                {MATERI_PANCASILA.title}
               </h3>
             </div>
           </div>
@@ -106,11 +118,11 @@ export const MateriModal: React.FC<MateriModalProps> = ({
                 Topik Bahasan Ujian
               </span>
               <p className="text-xs text-blue-800/90 mt-1 leading-relaxed">
-                Pelajari 4 pokok materi bilangan desimal berikut untuk mempersiapkan diri menghadapi tes sumatif.
+                Pelajari 8 pokok materi pengamalan Pancasila berikut untuk mempersiapkan diri menghadapi tes sumatif.
               </p>
             </div>
 
-            {MATERI_MATEMATIKA.sections.map((sec: MateriSection, idx: number) => {
+            {MATERI_PANCASILA.sections.map((sec: MateriSection, idx: number) => {
               const isActive = sec.id === activeSectionId;
               return (
                 <button
@@ -175,11 +187,11 @@ export const MateriModal: React.FC<MateriModalProps> = ({
               ))}
             </div>
 
-            {/* Poin Kunci / Rumus Penting */}
+            {/* Poin Kunci / Intisari */}
             <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-3">
               <div className="flex items-center gap-2 text-amber-900 font-extrabold text-xs sm:text-sm uppercase tracking-wider">
                 <Sparkles className="w-4 h-4 text-amber-600" />
-                <span>Poin Kunci &amp; Ringkasan Rumus</span>
+                <span>Poin Kunci &amp; Butir Pengamalan</span>
               </div>
               <ul className="space-y-2 text-xs sm:text-sm text-amber-950 font-medium">
                 {activeSection.keyPoints.map((pt, i) => (
@@ -191,12 +203,12 @@ export const MateriModal: React.FC<MateriModalProps> = ({
               </ul>
             </div>
 
-            {/* Tips Belajar & Trik Praktis */}
+            {/* Tips Belajar & Tindakan Nyata */}
             {activeSection.actionTips && activeSection.actionTips.length > 0 && (
               <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-2.5">
                 <div className="flex items-center gap-2 text-blue-900 font-extrabold text-xs sm:text-sm uppercase tracking-wider">
                   <HelpCircle className="w-4 h-4 text-blue-600" />
-                  <span>Tips Belajar &amp; Cara Mudah Mengingat</span>
+                  <span>Aksi Nyata &amp; Contoh Perilaku Siswa</span>
                 </div>
                 <ul className="space-y-1.5 text-xs text-blue-950 font-medium">
                   {activeSection.actionTips.map((tip, i) => (
